@@ -5,11 +5,24 @@ let computer = { x: 100, y: 300, width: 50, height: 30, vx: 0, vy: 0, isThrown: 
 const gravity = 0.5;
 const groundLevel = 350;
 
-// Draw the computer
+// Load computer image
+const computerImage = new Image();
+computerImage.src = 'computer.jpg'; // Replace with the actual path to your image
+
 function drawComputer() {
-  ctx.fillStyle = 'gray';
-  ctx.fillRect(computer.x, computer.y, computer.width, computer.height);
+  if (computerImage.complete) {
+    // Draw the image if it's loaded
+    ctx.drawImage(computerImage, computer.x, computer.y, computer.width, computer.height);
+  } else {
+    // Fallback to drawing a rectangle while the image is loading
+    ctx.fillStyle = 'gray';
+    ctx.fillRect(computer.x, computer.y, computer.width, computer.height);
+  }
 }
+
+computerImage.onload = () => {
+  console.log('Computer image loaded');
+};
 
 // Update physics
 function update() {
