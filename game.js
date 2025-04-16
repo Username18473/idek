@@ -53,7 +53,15 @@ canvas.addEventListener('click', () => {
 // Game loop
 function gameLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
-  drawComputer();
+
+   // Reset computer's position if it's not thrown
+  if (!computer.isThrown) {
+    computer.x = 100; // Original x position
+    computer.y = 300; // Original y position
+    computer.vx = 0;  // Horizontal velocity
+    computer.vy = 0;  // Vertical velocity
+  }
+  drawComputer()
   update();
   requestAnimationFrame(gameLoop);
 }
