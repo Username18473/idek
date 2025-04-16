@@ -36,7 +36,7 @@ function update() {
       computer.y = groundLevel - computer.height;
       computer.vy = 0;
       computer.isThrown = false; // Stop motion
-      console.log('Computer broken!');
+      alert('Computer broken!');
     }
   }
 }
