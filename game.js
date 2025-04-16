@@ -1,7 +1,7 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-let computer = { x: 100, y: 300, width: 50, height: 30, vx: 0, vy: 0, isThrown: false };
+let computer = { x: 100, y: 300, width: 70, height: 70, vx: 0, vy: 0, isThrown: false };
 const gravity = 0.5;
 const groundLevel = 350;
 
