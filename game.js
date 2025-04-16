@@ -58,3 +58,28 @@ function gameLoop() {
 }
 
 gameLoop();
+
+
+function update() {
+  if (computer.isThrown) {
+    computer.vy += gravity; // Apply gravity
+    computer.x += computer.vx; // Update horizontal position
+    computer.y += computer.vy; // Update vertical position
+
+    // Check if the computer goes off-screen
+    if (computer.x + computer.width < 0 || computer.x > canvas.width || computer.y > canvas.height) {
+      computer.x = 100; // Reset x position
+      computer.y = 300; // Reset y position
+      computer.vx = 0;  // Reset horizontal velocity
+      computer.vy = 0;  // Reset vertical velocity
+      computer.isThrown = false; // Stop motion
+    }
+
+    // Check for collision with the ground
+    if (computer.y + computer.height >= groundLevel) {
+      computer.y = groundLevel - computer.height;
+      computer.vy = 0;
+      computer.isThrown = false; // Stop motion
+    }
+  }
+}
